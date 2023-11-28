@@ -13,7 +13,6 @@ else
 //$sql="DROP DATABASE MH_HW4";
 
 //creating the database
-/*
 $sql="CREATE DATABASE Foil_Addicts";
 try{
     if(mysqli_query($conn, $sql));
@@ -24,34 +23,7 @@ try{
 catch (exception $e)
 {
     echo $e->getmessage() . "\n";
-}*/
-echo "<header>";
-    echo "<h1>Foil Addicts Database</h1>";
-echo "</header>";
-
-echo "<br>If this is your first time using the Foil Addicts Database, please click the button below to generate a blank database!";
-print <<<_HTML_
-    <FORM action="/foil_create.php" method="post">
-    <INPUT type="submit" value="Create the Database"/>
-    </FORM>
-    _HTML_;
-
-echo "If you'd like to delete the Foil Addicts Database and all data contained within, click the button below!";
-print <<<_HTML_
-    <FORM action="/foil_delete.php" method="post">
-    <INPUT type="submit" value="Delete the Database"/>
-    </FORM>
-    _HTML_;
-
-echo "<header>";
-    echo "<h2>Forms</h2>";
-    echo "<h3>Add Customer to Foil Addicts:</h3>";
-echo "</header>";
-print <<<_HTML_
-    <FORM action="/foil_addCustomer.php" method="post">
-    <INPUT type="submit" value="Add Customer"/>
-    </FORM>
-    _HTML_;
+}
 
 //selecting the database
 mysqli_select_db($conn, 'Foil_Addicts');
@@ -237,6 +209,8 @@ print <<<_HTML_
   <input type="submit" value="Submit">
 </form>
 _HTML_;
+
+
 
 //formatting the current table and displaying it
 mysqli_select_db($conn, 'foil_addicts');
