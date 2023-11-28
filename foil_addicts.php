@@ -10,25 +10,12 @@ else
     echo "Connection Created\n";
 }
 
-//$sql="DROP DATABASE MH_HW4";
-
-//creating the database
-/*
-$sql="CREATE DATABASE Foil_Addicts";
-try{
-    if(mysqli_query($conn, $sql));
-    {
-        echo "Database Created\n";
-    }
-}
-catch (exception $e)
-{
-    echo $e->getmessage() . "\n";
-}*/
+//header for page title
 echo "<header>";
     echo "<h1>Foil Addicts Database</h1>";
 echo "</header>";
 
+//header and buttons for each of customer's forms
 echo "<br>If this is your first time using the Foil Addicts Database, please click the button below to generate a blank database!";
 print <<<_HTML_
     <FORM action="/foil_create.php" method="post">
@@ -45,165 +32,40 @@ print <<<_HTML_
 
 echo "<header>";
     echo "<h2>Forms</h2>";
-    echo "<h3>Add Customer to Foil Addicts:</h3>";
+    echo "<h3>Customer Forms</h3>";
+    echo "<h4>Create Customer for Foil Addicts:</h4>";
 echo "</header>";
 print <<<_HTML_
-    <FORM action="/foil_addCustomer.php" method="post">
-    <INPUT type="submit" value="Add Customer"/>
+    <FORM action="/foil_createCustomer.php" method="post">
+    <INPUT type="submit" value="Create Customer"/>
+    </FORM>
+    _HTML_;
+echo "<header>";
+    echo "<h4>Modify Customer in Foil Addicts:</h4>";
+echo "</header>";
+print <<<_HTML_
+    <FORM action="/foil_modifyCustomer.php" method="post">
+    <INPUT type="submit" value="Modify Customer"/>
+    </FORM>
+    _HTML_;
+echo "<header>";
+    echo "<h4>Delete Customer from Foil Addicts:</h4>";
+echo "</header>";
+print <<<_HTML_
+    <FORM action="/foil_deleteCustomer.php" method="post">
+    <INPUT type="submit" value="Delete Customer"/>
     </FORM>
     _HTML_;
 
-//selecting the database
-mysqli_select_db($conn, 'Foil_Addicts');
-
-//creating the table
-$sql = "CREATE TABLE Customer
-(CustomerNum int NOT NULL,
-PRIMARY KEY (CustomerNum), 
-CustomerName varchar(20), 
-Street varchar(20),
-City varchar(20),
-Province varchar(2),
-Zipcode int NOT NULL)";
-
-//test query
-try{
-    if(mysqli_query($conn, $sql))
-    {
-        echo "Table Created\n";
-    }
-}
-catch (exception $e)
-{
-    echo $e->getmessage() . "\n";
-}
-
-//creating the table
-$sql = "CREATE TABLE Purchase
-(OrderNum int NOT NULL,
-PRIMARY KEY (OrderNum), 
-OrderDate varchar(20),
-CustomerNum int NOT NULL, 
-FOREIGN KEY (CustomerNum) REFERENCES Customer(CustomerNum))";
-
-//test query
-try{
-    if(mysqli_query($conn, $sql))
-    {
-        echo "Table Created\n";
-    }
-}
-catch (exception $e)
-{
-    echo $e->getmessage() . "\n";
-}
-
-
-//creating the table
-$sql = "CREATE TABLE Expansion
-(ExpansionNum int NOT NULL,
-PRIMARY KEY (ExpansionNum),
-ExpansionName varchar(20),
-ReleaseDate varchar(20),
-NumberOfCards int NOT NULL)";
-;
-
-//test query
-try{
-    if(mysqli_query($conn, $sql))
-    {
-        echo "Table Created\n";
-    }
-}
-catch (exception $e)
-{
-    echo $e->getmessage() . "\n";
-}
-
-//creating the table
-$sql = "CREATE TABLE Ind_Card
-(IndexNum int NOT NULL,
-PRIMARY KEY (IndexNum),
-CardName varchar(20),
-ExpansionNum int NOT NULL,
-Rarity int NOT NULL,
-FOREIGN KEY (ExpansionNum) REFERENCES Expansion(ExpansionNum))";
-
-//test query
-try{
-    if(mysqli_query($conn, $sql))
-    {
-        echo "Table Created\n";
-    }
-}
-catch (exception $e)
-{
-    echo $e->getmessage() . "\n";
-}
-
-//creating the table
-$sql = "CREATE TABLE CardPack
-(ItemNum int NOT NULL,
-PRIMARY KEY (ItemNum),
-CardsContained int NOT NULL,
-ExpansionNum int NOT NULL,
-OnHand int NOT NULL,
-Price decimal(10,2),
-FOREIGN KEY (ExpansionNum) REFERENCES Expansion(ExpansionNum))";
-
-//test query
-
-try{
-    if(mysqli_query($conn, $sql))
-    {
-        echo "Table Created\n";
-    }
-}
-catch (exception $e)
-{
-    echo $e->getmessage() . "\n";
-}
-
-//creating the table
-$sql = "CREATE TABLE OrderLine
-(OrderNum int NOT NULL,
-ItemNum int NOT NULL,
-NumOrdered int NOT NULL,
-Price decimal(10,2),
-FOREIGN KEY (ItemNum) REFERENCES CardPack(ItemNum),
-FOREIGN KEY (OrderNum) REFERENCES Purchase(OrderNum))"
-;
-
-//test query
-try{
-    if(mysqli_query($conn, $sql))
-    {
-        echo "Table Created\n";
-    }
-}
-catch (exception $e)
-{
-    echo $e->getmessage() . "\n";
-}
-
-
-//calling the post function method
-getInput();
-
-//the post function method
-function getInput(){
-    print <<<_HTML_
-    <FORM action="" method="post">
-    CustomerNum: <input type="text" name="customerNum" />
-    CustomerName: <input type="text" name="customerName" />
-    Street: <input type="text" name="street" />
-    City: <input type="text" name="city" />
-    Province: <input type="text" name="province" />
-    Zipcode: <input type="text" name="zipcode" />
-    <INPUT type="submit" />
+echo "<header>";
+    echo "<h2>Reports</h2>";
+    echo "<h4>Generate Foil Addicts Customer Report:</h4>";
+echo "</header>";
+print <<<_HTML_
+    <FORM action="/foil_customerReport.php" method="post">
+    <INPUT type="submit" value="Generate Customer Report"/>
     </FORM>
     _HTML_;
-}
 
 //selecting the database
 mysqli_select_db($conn, 'foil_addicts');

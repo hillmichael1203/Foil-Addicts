@@ -10,9 +10,12 @@ else
     echo "Connection Created\n";
 }
 
+//header stuff
 echo "<header>";
     echo "<h1>Add Customer to Foil Addicts Database</h1>";
 echo "</header>";
+
+echo "<br><br> Enter the information for a new customer in the database below!<br>";
 
 //selecting the database
 mysqli_select_db($conn, 'Foil_Addicts');
@@ -53,6 +56,7 @@ if(isset($_POST['customerName']))
     $_POST = array();
 }
 
+//back button
 print <<<_HTML_
     <FORM action="/foil_addicts.php" method="post">
     <INPUT type="submit" value="Back to Main Screen"/>
