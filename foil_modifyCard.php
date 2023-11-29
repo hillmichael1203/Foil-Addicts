@@ -12,10 +12,10 @@ else
 
 //header things
 echo "<header>";
-    echo "<h1>Modify a Customer in the Foil Addicts Database</h1>";
+    echo "<h1>Modify a Card in the Foil Addicts Database</h1>";
 echo "</header>";
 
-echo "<br><br> Please enter the customer's CustomerNum and updated information to modify their data.<br>";
+echo "<br><br> Please enter the card's Index Number and updated information to modify its data.<br>";
 
 
 //selecting the database
@@ -28,12 +28,16 @@ getInput();
 function getInput(){
     print <<<_HTML_
     <FORM action="" method="post">
-    CustomerNum: <input type="text" name="customerNum" />
-    CustomerName: <input type="text" name="customerName" />
-    Street: <input type="text" name="street" />
-    City: <input type="text" name="city" />
-    Province: <input type="text" name="province" />
-    Zipcode: <input type="text" name="zipcode" />
+    IndexNum: <input type="text" name="indexNum" />
+    CardName: <input type="text" name="cardName" />
+    ExpansionNumber: <input type="text" name="expansionNumber" />
+    <label for="rarity">Choose a rarity:</label>
+    <select name="rarity" id="rarity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
     <INPUT type="submit" />
     </FORM>
     _HTML_;
@@ -42,16 +46,14 @@ function getInput(){
 //selecting the database
 mysqli_select_db($conn, 'foil_addicts');
 
-if(isset($_POST['customerName']))
+if(isset($_POST['cardName']))
 {
     //updating the customer with the corresponding ID
-    $sql = "UPDATE Customer 
-    SET CustomerName = '$_POST[customerName]', 
-    Street = '$_POST[street]', 
-    City = '$_POST[city]', 
-    Province = '$_POST[province]', 
-    Zipcode = '$_POST[zipcode]'
-    WHERE CustomerNum = $_POST[customerNum]";
+    $sql = "UPDATE Ind_Card
+    SET CardName = '$_POST[cardName]', 
+    ExpansionNumber = '$_POST[expansionNumber]', 
+    Rarity = '$_POST[rarity]'
+    WHERE IndexNum = $_POST[indexNum]";
 
     if (!mysqli_query($conn, $sql))
         {
@@ -71,24 +73,20 @@ print <<<_HTML_
 
 //formatting the current table and displaying it
 mysqli_select_db($conn, 'foil_addicts');
-$result= mysqli_query($conn, "SELECT * FROM Customer");
+$result= mysqli_query($conn, "SELECT * FROM Ind_Card");
 echo "<table border='1'>
 <tr>
-<th> Customer Number </th>
-<th> Customer Name </th>
-<th> Street</th>
-<th> City</th>
-<th> State</th>
-<th> Zip Code</th>
+<th> Index Number</th>
+<th> Card Name</th>
+<th> Expansion Number</th>
+<th> Rarity</th>
 </tr>";
 while($row = mysqli_fetch_array($result))
 { echo "<tr>";
-echo "<td>" . $row["CustomerNum"] . "</td>";
-echo "<td>" . $row["CustomerName"] . "</td>";
-echo "<td>" . $row["Street"] . "</td>";
-echo "<td>" . $row["City"] . "</td>";
-echo "<td>" . $row["Province"] . "</td>";
-echo "<td>" . $row["Zipcode"] . "</td>";
+echo "<td>" . $row["IndexNum"] . "</td>";
+echo "<td>" . $row["CardName"] . "</td>";
+echo "<td>" . $row["ExpansionNumber"] . "</td>";
+echo "<td>" . $row["Rarity"] . "</td>";
 echo "</tr>";
 }
 echo "</table>";

@@ -12,7 +12,7 @@ else
 
 //header of the report
 echo "<header>";
-    echo "<h1>Foil Addicts Customer Report</h1>";
+    echo "<h1>Foil Addicts Card Report</h1>";
 echo "</header>";
 
 //the time the report was generated
@@ -23,26 +23,22 @@ echo "Report generated at " . date("h:i:sa m/d/Y") . "<br>";
 date_default_timezone_set("America/New_York");
 mysqli_select_db($conn, 'Foil_Addicts');
 
-//formatting the report and displaying it
+//formatting the current table and displaying it
 mysqli_select_db($conn, 'foil_addicts');
-$result= mysqli_query($conn, "SELECT * FROM Customer");
+$result= mysqli_query($conn, "SELECT * FROM Ind_Card");
 echo "<table border='1'>
 <tr>
-<th> Customer Number </th>
-<th> Customer Name </th>
-<th> Street</th>
-<th> City</th>
-<th> State</th>
-<th> Zip Code</th>
+<th> Index Number</th>
+<th> Card Name</th>
+<th> Expansion Number</th>
+<th> Rarity</th>
 </tr>";
 while($row = mysqli_fetch_array($result))
 { echo "<tr>";
-echo "<td>" . $row["CustomerNum"] . "</td>";
-echo "<td>" . $row["CustomerName"] . "</td>";
-echo "<td>" . $row["Street"] . "</td>";
-echo "<td>" . $row["City"] . "</td>";
-echo "<td>" . $row["Province"] . "</td>";
-echo "<td>" . $row["Zipcode"] . "</td>";
+echo "<td>" . $row["IndexNum"] . "</td>";
+echo "<td>" . $row["CardName"] . "</td>";
+echo "<td>" . $row["ExpansionNumber"] . "</td>";
+echo "<td>" . $row["Rarity"] . "</td>";
 echo "</tr>";
 }
 echo "</table>";

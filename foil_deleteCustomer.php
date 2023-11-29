@@ -47,7 +47,7 @@ if(isset($_POST['customerNum']))
         {
         die('Could not connect: ' . mysqli_error());
         }
-    echo "1 record added";
+    echo "1 record deleted";
 
     $_POST = array();
 }
@@ -64,12 +64,12 @@ mysqli_select_db($conn, 'foil_addicts');
 $result= mysqli_query($conn, "SELECT * FROM Customer");
 echo "<table border='1'>
 <tr>
-<th> CustomerNum </th>
-<th> CustomerName </th>
+<th> Customer Number</th>
+<th> Customer Name</th>
 <th> Street</th>
 <th> City</th>
 <th> State</th>
-<th> Zipcode</th>
+<th> Zip Code</th>
 </tr>";
 while($row = mysqli_fetch_array($result))
 { echo "<tr>";
