@@ -56,7 +56,7 @@ if(isset($_POST['expansionNumber']))
     </tr>";
     while($row = mysqli_fetch_array($result))
     { echo "<tr>";
-    echo "<td>" . $row["ItemNumber"] . "</td>";
+    echo "<td>" . $row["ItemNum"] . "</td>";
     echo "<td>" . $row["CardsContained"] . "</td>";
     echo "<td>" . $row["ExpansionNumber"] . "</td>";
     echo "<td>" . $row["OnHand"] . "</td>";

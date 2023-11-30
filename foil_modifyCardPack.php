@@ -10,12 +10,13 @@ else
     echo "Connection Created\n";
 }
 
-//header things
+//header stuff
 echo "<header>";
-    echo "<h1>Modify a Customer in the Foil Addicts Database</h1>";
+    echo "<h1>Delete a CardPack from the Foil Addicts Database</h1>";
 echo "</header>";
 
-echo "<br><br> Please enter the customer's CustomerNum and updated information to modify their data.<br>";
+echo "<br><br> Please enter the itemNum of the CardPack to be removed.<br>";
+echo "<br><br> Please note that you cannot delete the first record.";
 
 
 //selecting the database
@@ -29,10 +30,6 @@ function getInput(){
     print <<<_HTML_
     <FORM action="" method="post">
     ItemNum: <input type="text" name="itemNum" />
-    CardsContained: <input type="text" name="cardsContained" />
-    ExpansionNumber: <input type="text" name="expansionNumber" />
-    OnHand: <input type="text" name="onHand" />
-    Price: <input type="text" name="price" />
     <INPUT type="submit" />
     </FORM>
     _HTML_;
@@ -41,21 +38,17 @@ function getInput(){
 //selecting the database
 mysqli_select_db($conn, 'foil_addicts');
 
-if(isset($_POST['customerName']))
+if(isset($_POST['itemNum']))
 {
-    //updating the customer with the corresponding ID
-    $sql = "UPDATE CardPack 
-    SET CardsContained = '$_POST[cardsContained]', 
-    ExpansionNumber = '$_POST[expansionNumber]', 
-    OnHand = '$_POST[onHand]', 
-    Price = '$_POST[price]' 
-    WHERE ItemNum = $_POST[itemNum]";
+    //removing the data from the database
+    $sql = "DELETE FROM CardPack 
+    WHERE ItemNum = '$_POST[itemNum]'";
 
     if (!mysqli_query($conn, $sql))
         {
         die('Could not connect: ' . mysqli_error());
         }
-    echo "1 record modified";
+    echo "1 record deleted";
 
     $_POST = array();
 }
@@ -80,7 +73,7 @@ echo "<table border='1'>
 </tr>";
 while($row = mysqli_fetch_array($result))
 { echo "<tr>";
-echo "<td>" . $row["ItemNumber"] . "</td>";
+echo "<td>" . $row["ItemNum"] . "</td>";
 echo "<td>" . $row["CardsContained"] . "</td>";
 echo "<td>" . $row["ExpansionNumber"] . "</td>";
 echo "<td>" . $row["OnHand"] . "</td>";
