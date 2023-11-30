@@ -12,10 +12,11 @@ else
 
 //header stuff
 echo "<header>";
-    echo "<h1>Add CardPack to Foil Addicts Database</h1>";
+    echo "<h1>Delete a CardPack from the Foil Addicts Database</h1>";
 echo "</header>";
 
-echo "<br><br> Enter the information for a new CardPack in the database below!<br>";
+echo "<br><br> Please enter the itemNum of the CardPack to be removed.<br>";
+
 
 //selecting the database
 mysqli_select_db($conn, 'Foil_Addicts');
@@ -28,10 +29,6 @@ function getInput(){
     print <<<_HTML_
     <FORM action="" method="post">
     ItemNum: <input type="text" name="itemNum" />
-    CardsContained: <input type="text" name="cardsContained" />
-    ExpansionNumber: <input type="text" name="expansionNumber" />
-    OnHand: <input type="text" name="onHand" />
-    Price: <input type="text" name="price" />
     <INPUT type="submit" />
     </FORM>
     _HTML_;
@@ -40,19 +37,17 @@ function getInput(){
 //selecting the database
 mysqli_select_db($conn, 'foil_addicts');
 
-//ask about this
-if(isset($_POST['cardsContained']))
+if(isset($_POST['itemNum']))
 {
-    //inserting the post data into the database
-    $sql = "INSERT INTO CardPack (ItemNum, CardsContained, ExpansionNumber, OnHand, Price)
-    VALUES
-    ('$_POST[itemNum]', '$_POST[cardsContained]', '$_POST[expansionNumber]', '$_POST[onHand]', '$_POST[price]')";
+    //removing the data from the database
+    $sql = "DELETE FROM CardPack 
+    WHERE ItemNum = '$_POST[itemNum]'";
 
     if (!mysqli_query($conn, $sql))
         {
         die('Could not connect: ' . mysqli_error());
         }
-    echo "1 record added";
+    echo "1 record deleted";
 
     $_POST = array();
 }

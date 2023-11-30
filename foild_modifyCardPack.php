@@ -10,12 +10,13 @@ else
     echo "Connection Created\n";
 }
 
-//header stuff
+//header things
 echo "<header>";
-    echo "<h1>Add CardPack to Foil Addicts Database</h1>";
+    echo "<h1>Modify a Customer in the Foil Addicts Database</h1>";
 echo "</header>";
 
-echo "<br><br> Enter the information for a new CardPack in the database below!<br>";
+echo "<br><br> Please enter the customer's CustomerNum and updated information to modify their data.<br>";
+
 
 //selecting the database
 mysqli_select_db($conn, 'Foil_Addicts');
@@ -40,19 +41,21 @@ function getInput(){
 //selecting the database
 mysqli_select_db($conn, 'foil_addicts');
 
-//ask about this
-if(isset($_POST['cardsContained']))
+if(isset($_POST['customerName']))
 {
-    //inserting the post data into the database
-    $sql = "INSERT INTO CardPack (ItemNum, CardsContained, ExpansionNumber, OnHand, Price)
-    VALUES
-    ('$_POST[itemNum]', '$_POST[cardsContained]', '$_POST[expansionNumber]', '$_POST[onHand]', '$_POST[price]')";
+    //updating the customer with the corresponding ID
+    $sql = "UPDATE CardPack 
+    SET CardsContained = '$_POST[cardsContained]', 
+    ExpansionNumber = '$_POST[expansionNumber]', 
+    OnHand = '$_POST[onHand]', 
+    Price = '$_POST[price]' 
+    WHERE ItemNum = $_POST[itemNum]";
 
     if (!mysqli_query($conn, $sql))
         {
         die('Could not connect: ' . mysqli_error());
         }
-    echo "1 record added";
+    echo "1 record modified";
 
     $_POST = array();
 }
