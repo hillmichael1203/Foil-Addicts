@@ -73,7 +73,7 @@ catch (exception $e)
 
 //creating the table
 $sql = "CREATE TABLE Expansion
-(ExpansionNumber int NOT NULL,
+(ExpansionNumber int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY (ExpansionNumber),
 ExpansionName varchar(20),
 ReleaseDate DATE NOT NULL,
