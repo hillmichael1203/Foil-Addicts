@@ -15,7 +15,7 @@ echo "<header>";
     echo "<h1>See all cards by expansion in the Foil Addicts Database</h1>";
 echo "</header>";
 
-echo "<br><br> Please enter the expansion's ExpansionNum get the card's data.<br>";
+echo "<br><br> Please enter the expansion's ExpansionNumber get the card's data.<br>";
 
 //calling the post function method
 getInput();
