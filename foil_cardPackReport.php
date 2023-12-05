@@ -12,6 +12,7 @@ else
 
 //header of the report
 echo "<header>";
+    echo "<body style='background-color:282828; font-family: Arial; color: white; padding: 25px;'>";
     echo "<h1>Foil Addicts CardPack Report</h1>";
 echo "</header>";
 

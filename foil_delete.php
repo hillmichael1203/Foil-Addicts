@@ -10,6 +10,8 @@ else
     echo "Connection Created\n";
 }
 
+echo "<body style='background-color:282828; font-family: Arial; color: white; padding: 25px;'>";
+
 mysqli_select_db($conn, 'Foil_Addicts');
 
 if(mysqli_query($conn, "Drop DATABASE Foil_Addicts"))

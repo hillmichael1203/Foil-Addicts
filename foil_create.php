@@ -11,6 +11,7 @@ else
 }
 
 //$sql="DROP DATABASE MH_HW4";
+echo "<body style='background-color:282828; font-family: Arial; color: white; padding: 25px;'>";
 
 //creating the database
 $sql="CREATE DATABASE Foil_Addicts";

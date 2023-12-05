@@ -12,6 +12,7 @@ else
 
 //header stuff
 echo "<header>";
+    echo "<body style='background-color:282828; font-family: Arial; color: white; padding: 25px;'>";
     echo "<h1>Add Expansion to Foil Addicts Database</h1>";
 echo "</header>";
 

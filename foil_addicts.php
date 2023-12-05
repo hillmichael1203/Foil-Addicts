@@ -12,6 +12,8 @@ else
 
 //header for page title
 echo "<header>";
+    echo "<style>h3 {text-decoration: underline; padding-top: 25px;} h4 {color:b3b3b3;}</style>";
+    echo "<body style='background-color:282828; font-family: Arial; color: white; padding: 25px;'>";
     echo "<h1>Foil Addicts Database</h1>";
 echo "</header>";
 
