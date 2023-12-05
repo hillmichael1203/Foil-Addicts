@@ -12,7 +12,7 @@ else
 
 //header things
 echo "<header>";
-    echo "<h1>See all CardPacks by Expansion number in the Foil Addicts Database</h1>";
+    echo "<h1>See All CardPacks by Expansion number in the Foil Addicts Database</h1>";
 echo "</header>";
 
 echo "<br><br> Please enter the Cardpack's ExpansionNum get the cardpack's data.<br>";
