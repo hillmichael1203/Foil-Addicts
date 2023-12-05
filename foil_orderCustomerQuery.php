@@ -44,7 +44,7 @@ if(isset($_POST['CustomerNum']))
     // Stack Overflow
     $customerNum = $_POST['CustomerNum'];
     $sql = "
-    SELECT CustomerNum, OrderDate
+    SELECT OrderNum, CustomerNum, OrderDate
     FROM Purchase
     WHERE Purchase.CustomerNum = '$customerNum'
     ";
@@ -52,11 +52,13 @@ if(isset($_POST['CustomerNum']))
     $result= mysqli_query($conn, $sql);
     echo "<table border='1'>
     <tr>
+    <th> Order Num</th>
     <th> Order Date</th>
     <th> Customer Number</th>
     </tr>";
     while($row = mysqli_fetch_array($result))
     { echo "<tr>";
+    echo "<td>" . $row["OrderNum"] . "</td>";
     echo "<td>" . $row["OrderDate"] . "</td>";
     echo "<td>" . $row["CustomerNum"] . "</td>";
     echo "</tr>";
