@@ -277,44 +277,6 @@ if(isset($_POST['customerNum']))
     $_POST = array();
 }
 
-print <<<_HTML_
-<form action="/foil_addicts.php">
-  <label for="cars">Choose a rarity:</label>
-  <select name="cars" id="cars">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
-  <br><br>
-  <input type="submit" value="Submit">
-</form>
-_HTML_;
-
-//formatting the current table and displaying it
-mysqli_select_db($conn, 'foil_addicts');
-$result= mysqli_query($conn, "SELECT * FROM Customer");
-echo "<table border='1'>
-<tr>
-<th> CustomerNum </th>
-<th> CustomerName </th>
-<th> Street</th>
-<th> City</th>
-<th> State</th>
-<th> Zipcode</th>
-</tr>";
-while($row = mysqli_fetch_array($result))
-{ echo "<tr>";
-echo "<td>" . $row["CustomerNum"] . "</td>";
-echo "<td>" . $row["CustomerName"] . "</td>";
-echo "<td>" . $row["Street"] . "</td>";
-echo "<td>" . $row["City"] . "</td>";
-echo "<td>" . $row["Province"] . "</td>";
-echo "<td>" . $row["Zipcode"] . "</td>";
-echo "</tr>";
-}
-echo "</table>";
-
 mysqli_close($conn);
 exit;
 ?>

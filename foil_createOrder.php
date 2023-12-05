@@ -12,6 +12,7 @@ else
 
 //header stuff
 echo "<header>";
+    echo "<body style='background-color:282828; font-family: Arial; color: white; padding: 25px;'>";
     echo "<h1>Add Order to Foil Addicts Database</h1>";
 echo "</header>";
 
@@ -26,7 +27,7 @@ getInput();
 //the post function method
 function getInput(){
     print <<<_HTML_
-    <FORM action="" method="post">
+    <FORM action="foil_createOrder2.php" method="post">
     CustomerNum: <input type="text" name="customerNum" />
     <INPUT type="submit" />
     </FORM>

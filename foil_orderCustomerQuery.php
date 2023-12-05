@@ -13,10 +13,10 @@ else
 //header things
 echo "<header>";
     echo "<body style='background-color:282828; font-family: Arial; color: white; padding: 25px;'>";
-    echo "<h1>See specific order details in the Foil Addicts Database</h1>";
+    echo "<h1>See specific customer orders in the Foil Addicts Database</h1>";
 echo "</header>";
 
-echo "<br><br> Please enter the order's OrderNum to get the customer's data.<br>";
+echo "<br><br> Please enter the customer's CustomerNum to get the customer's data.<br>";
 
 //calling the post function method
 getInput();
@@ -25,7 +25,7 @@ getInput();
 function getInput(){
     print <<<_HTML_
     <FORM action="" method="post">
-    OrderNum: <input type="text" name="OrderNum" />
+    CustomerNum: <input type="text" name="CustomerNum" />
     <INPUT type="submit" />
     </FORM>
     _HTML_;
@@ -36,37 +36,33 @@ date_default_timezone_set("America/New_York");
 mysqli_select_db($conn, 'Foil_Addicts');
 
 
-
-if(isset($_POST['OrderNum']))
+if(isset($_POST['CustomerNum']))
 {
     //formatting the current table and displaying it
     mysqli_select_db($conn, 'foil_addicts');
 
     // Stack Overflow
-    $orderNum = $_POST['OrderNum'];
+    $customerNum = $_POST['CustomerNum'];
     $sql = "
-    SELECT *
-    FROM OrderLine
-    WHERE OrderLine.OrderNum = '$orderNum'
+    SELECT CustomerNum, OrderDate
+    FROM Purchase
+    WHERE Purchase.CustomerNum = '$customerNum'
     ";
 
     $result= mysqli_query($conn, $sql);
     echo "<table border='1'>
     <tr>
-    <th> Order Number </th>
-    <th> Item Number </th>
-    <th> Number Ordered </th>
-    <th> Price </th>
+    <th> Order Date</th>
+    <th> Customer Number</th>
     </tr>";
     while($row = mysqli_fetch_array($result))
     { echo "<tr>";
-    echo "<td>" . $row["OrderNum"] . "</td>";
-    echo "<td>" . $row["ItemNum"] . "</td>";
-    echo "<td>" . $row["NumOrdered"] . "</td>";
-    echo "<td>" . $row["Price"] . "</td>";
+    echo "<td>" . $row["OrderDate"] . "</td>";
+    echo "<td>" . $row["CustomerNum"] . "</td>";
     echo "</tr>";
     }
     echo "</table>";
+
 }
 
 echo "<br>";
@@ -80,5 +76,4 @@ print <<<_HTML_
 
 mysqli_close($conn);
 exit;
-
 ?>
