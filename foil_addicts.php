@@ -184,7 +184,6 @@ print <<<_HTML_
     <INPUT type="submit" value="Generate Expansion Information Report"/>
     </FORM>
     _HTML_;
-echo "<br>";
 echo "<header>";
     echo "<h3>Instructor Requested</h3>";
     echo "<h4>November 2023 Expansion 1 Report:</h4>";
@@ -243,14 +242,6 @@ print <<<_HTML_
     </FORM>
     _HTML_;
 echo "<header>";
-    echo "<h4>Find Revenue by Expansion:</h4>";
-echo "</header>";
-print <<<_HTML_
-    <FORM action="/foil_expansionRevenueQuery.php" method="post">
-    <INPUT type="submit" value="Find Revenue by Expansion"/>
-    </FORM>
-    _HTML_;
-echo "<header>";
     echo "<h3>Order</h3>";
     echo "<h4>Find details of Order:</h4>";
 echo "</header>";
@@ -265,6 +256,15 @@ echo "</header>";
 print <<<_HTML_
     <FORM action="/foil_orderCustomerQuery.php" method="post">
     <INPUT type="submit" value="Find Orders by Customer"/>
+    </FORM>
+    _HTML_;
+echo "<header>";
+    echo "<h3>Instructor Requested</h3>";
+    echo "<h4>Find Revenue by Expansion:</h4>";
+echo "</header>";
+print <<<_HTML_
+    <FORM action="/foil_expansionRevenueQuery.php" method="post">
+    <INPUT type="submit" value="Find Revenue by Expansion"/>
     </FORM>
     _HTML_;
 
