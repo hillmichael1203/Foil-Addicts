@@ -52,8 +52,8 @@ if(isset($_POST['ExpansionNumber']))
     $sql = "
     SELECT Expansion.ExpansionNumber, Expansion.ExpansionName, Expansion.ReleaseDate, Expansion.NumberOfCards, COALESCE(SUM(OrderLine.Price), 0) AS Revenue
     FROM Expansion
-    LEFT JOIN Ind_Card ON Expansion.ExpansionNumber = Ind_Card.ExpansionNumber
-    LEFT JOIN OrderLine ON Ind_Card.IndexNum = OrderLine.ItemNum
+    LEFT JOIN CardPack ON Expansion.ExpansionNumber = CardPack.ExpansionNumber
+    LEFT JOIN OrderLine ON CardPack.ItemNum = OrderLine.ItemNum
     WHERE Expansion.ExpansionNumber = '$expansionNum'
     GROUP BY Expansion.ExpansionNumber, Expansion.ExpansionName, Expansion.ReleaseDate, Expansion.NumberOfCards
     ";

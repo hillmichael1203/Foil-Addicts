@@ -200,6 +200,13 @@ if (!mysqli_query($conn, $sql))
 die('Could not connect: ' . mysqli_error());
 }
 echo "1 record added";
+$sql = "INSERT INTO Expansion (ExpansionNumber, ExpansionName, ReleaseDate, NumberOfCards)
+VALUES('2', 'Season 2', CURRENT_DATE(), '15')";
+if (!mysqli_query($conn, $sql))
+{
+die('Could not connect: ' . mysqli_error());
+}
+echo "1 record added";
 
 //adding test data for cards
 $sql = "INSERT INTO Ind_Card (IndexNum, CardName, ExpansionNumber, Rarity)
@@ -230,10 +237,33 @@ if (!mysqli_query($conn, $sql))
 die('Could not connect: ' . mysqli_error());
 }
 echo "1 record added";
+$sql = "INSERT INTO Ind_Card (IndexNum, CardName, ExpansionNumber, Rarity)
+VALUES('5', 'LARRY', '2', '4')";
+if (!mysqli_query($conn, $sql))
+{
+die('Could not connect: ' . mysqli_error());
+}
+echo "1 record added";
 
 //test data for card packs
 $sql = "INSERT INTO CardPack (ItemNum, CardsContained, ExpansionNumber, OnHand, Price)
-VALUES('1', '10', '1', '200', '5.25')";
+VALUES('1', '10', '1', '200', '5')";
+if (!mysqli_query($conn, $sql))
+{
+die('Could not connect: ' . mysqli_error());
+}
+echo "1 record added";
+
+$sql = "INSERT INTO CardPack (ItemNum, CardsContained, ExpansionNumber, OnHand, Price)
+VALUES('2', '25', '1', '100', '10')";
+if (!mysqli_query($conn, $sql))
+{
+die('Could not connect: ' . mysqli_error());
+}
+echo "1 record added";
+
+$sql = "INSERT INTO CardPack (ItemNum, CardsContained, ExpansionNumber, OnHand, Price)
+VALUES('3', '5', '2', '2000', '3')";
 if (!mysqli_query($conn, $sql))
 {
 die('Could not connect: ' . mysqli_error());
@@ -249,9 +279,41 @@ die('Could not connect: ' . mysqli_error());
 }
 echo "1 record added";
 
+$sql = "INSERT INTO Purchase (OrderDate, CustomerNum)
+VALUES('2023-11-5', '4')";
+if (!mysqli_query($conn, $sql))
+{
+die('Could not connect: ' . mysqli_error());
+}
+echo "1 record added";
+
 //test data for orderline
 $sql = "INSERT INTO OrderLine (OrderNum, ItemNum, NumOrdered, Price)
-VALUES('1', '1', '2', '10.50')";
+VALUES('1', '1', '2', '10')";
+if (!mysqli_query($conn, $sql))
+{
+die('Could not connect: ' . mysqli_error());
+}
+echo "1 record added";
+
+$sql = "INSERT INTO OrderLine (OrderNum, ItemNum, NumOrdered, Price)
+VALUES('2', '1', '5', '25')";
+if (!mysqli_query($conn, $sql))
+{
+die('Could not connect: ' . mysqli_error());
+}
+echo "1 record added";
+
+$sql = "INSERT INTO OrderLine (OrderNum, ItemNum, NumOrdered, Price)
+VALUES('2', '2', '10', '100')";
+if (!mysqli_query($conn, $sql))
+{
+die('Could not connect: ' . mysqli_error());
+}
+echo "1 record added";
+
+$sql = "INSERT INTO OrderLine (OrderNum, ItemNum, NumOrdered, Price)
+VALUES('2', '3', '1', '3')";
 if (!mysqli_query($conn, $sql))
 {
 die('Could not connect: ' . mysqli_error());

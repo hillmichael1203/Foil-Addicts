@@ -185,6 +185,16 @@ print <<<_HTML_
     </FORM>
     _HTML_;
 echo "<br>";
+echo "<header>";
+    echo "<h3>Instructor Requested</h3>";
+    echo "<h4>November 2023 Expansion 1 Report:</h4>";
+echo "</header>";
+print <<<_HTML_
+    <FORM action="/foil_monthlyReport.php" method="post">
+    <INPUT type="submit" value="Generate November Report"/>
+    </FORM>
+    _HTML_;
+echo "<br>";
 
 //queries
 echo "<header>";
